@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import React from 'react';
 import EventPage from './pages/EventPage';
 import './App.css';
