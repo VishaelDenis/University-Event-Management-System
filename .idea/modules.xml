@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/university-event-management.iml" filepath="$PROJECT_DIR$/.idea/university-event-management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/University-Event-Management-System.iml" filepath="$PROJECT_DIR$/.idea/University-Event-Management-System.iml" />
     </modules>
   </component>
 </project>
