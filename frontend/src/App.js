@@ -1,19 +1,20 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import HomePage from './pages/HomePage';
-import EventPage from './pages/EventPage';
-import './App.css';
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./routes/AppRoutes";
+import Navbar from "./components/common/Navbar";
+import { AuthProvider } from "./context/AuthContext";
+import "./App.css";
 
 function App() {
     return (
-        <div className="App">
-            <Navbar />
-            <div className="content">
-                <HomePage />
-                <EventPage />
-
-            </div>
-        </div>
+        <AuthProvider>
+            <BrowserRouter>
+                <div className="App">
+                    <Navbar />
+                    <AppRoutes />
+                </div>
+            </BrowserRouter>
+        </AuthProvider>
     );
 }
 
