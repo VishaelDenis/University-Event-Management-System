@@ -4,6 +4,7 @@ import AppRoutes from "./routes/AppRoutes";
 import Navbar from "./components/common/Navbar";
 import { AuthProvider } from "./context/AuthContext";
 import "./App.css";
+import "./styles/global.css";
 
 function App() {
     return (

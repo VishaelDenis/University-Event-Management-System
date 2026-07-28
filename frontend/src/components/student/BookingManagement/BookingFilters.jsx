@@ -1,8 +1,12 @@
 import React from "react";
+import SearchBar from "../../shared/SearchBar";
 
-function BookingFilters() {
-    // TODO (Vithusan)
-    return <p>Booking filters placeholder</p>;
+function BookingFilters({ onSearch }) {
+    return (
+        <div className="booking-filters">
+            <SearchBar onSearch={onSearch} />
+        </div>
+    );
 }
 
 export default BookingFilters;

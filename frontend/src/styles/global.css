@@ -7,3 +7,34 @@ table {
     border-collapse: collapse;
     width: 100%;
 }
+
+.booking-management {
+    max-width: 720px;
+    margin: 1rem 0;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    max-width: 420px;
+}
+
+.booking-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.booking-filters {
+    margin-bottom: 1rem;
+}
+
+.form-error {
+    color: #b00020;
+}
+
+.form-success {
+    color: #1b7f3a;
+}
