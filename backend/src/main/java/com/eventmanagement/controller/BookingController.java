@@ -24,6 +24,11 @@ public class BookingController {
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
+    @GetMapping
+    public ResponseEntity<List<Booking>> getAllBookings() {
+        return ResponseEntity.ok(bookingService.getAllBookings());
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Booking> getBookingById(@PathVariable Long id) {
         return ResponseEntity.ok(bookingService.getBookingById(id));
@@ -40,8 +45,8 @@ public class BookingController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Booking> updateBooking(@PathVariable Long id, @RequestBody BookingRequest request) {
-        return ResponseEntity.ok(bookingService.updateBookingCount(id, request));
+    public ResponseEntity<Booking> updateCount(@PathVariable Long id, @RequestBody BookingRequest request) {
+        return ResponseEntity.ok(bookingService.updateCount(id, request));
     }
 
     @DeleteMapping("/{id}")
