@@ -1,16 +1,52 @@
 package com.eventmanagement.controller;
 
+import com.eventmanagement.dto.request.BookingRequest;
+import com.eventmanagement.model.Booking;
+import com.eventmanagement.service.BookingService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/bookings")
 @CrossOrigin(origins = "http://localhost:3000")
 public class BookingController {
 
-    // TODO (Vithusan): POST, PUT (count), DELETE
+    @Autowired
+    private BookingService bookingService;
 
-    @GetMapping("/ping")
-    public String ping() {
-        return "Booking module - not implemented yet";
+    @PostMapping
+    public ResponseEntity<Booking> createBooking(@RequestBody BookingRequest request) {
+        Booking created = bookingService.createBooking(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Booking> getBookingById(@PathVariable Long id) {
+        return ResponseEntity.ok(bookingService.getBookingById(id));
+    }
+
+    @GetMapping("/student/{studentId}")
+    public ResponseEntity<List<Booking>> getBookingsByStudent(@PathVariable Long studentId) {
+        return ResponseEntity.ok(bookingService.getBookingsByStudent(studentId));
+    }
+
+    @GetMapping("/event/{eventId}")
+    public ResponseEntity<List<Booking>> getBookingsByEvent(@PathVariable Long eventId) {
+        return ResponseEntity.ok(bookingService.getBookingsByEvent(eventId));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Booking> updateBooking(@PathVariable Long id, @RequestBody BookingRequest request) {
+        return ResponseEntity.ok(bookingService.updateBookingCount(id, request));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteBooking(@PathVariable Long id) {
+        bookingService.deleteBooking(id);
+        return ResponseEntity.noContent().build();
     }
 }
