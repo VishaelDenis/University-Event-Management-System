@@ -1,14 +1,31 @@
-import api from "./axios";
+import api from './axiosConfig';
 
-export const getAllEvents = () => api.get("/events");
+export const getAllEvents = async () => {
+  const response = await api.get('/api/events');
+  return response.data;
+};
 
-export const getEventById = (id) => api.get(`/events/${id}`);
+export const getEventById = async (id) => {
+  const response = await api.get(`/api/events/${id}`);
+  return response.data;
+};
 
-export const getEventsByOrganizer = (organizerId) =>
-    api.get(`/events/organizer/${organizerId}`);
+export const getEventsByOrganizer = async (organizerId) => {
+  const response = await api.get(`/api/events/organizer/${organizerId}`);
+  return response.data;
+};
 
-export const createEvent = (eventData) => api.post("/events", eventData);
+export const createEvent = async (eventData) => {
+  const response = await api.post('/api/events', eventData);
+  return response.data;
+};
 
-export const updateEvent = (id, eventData) => api.put(`/events/${id}`, eventData);
+export const updateEvent = async (id, eventData) => {
+  const response = await api.put(`/api/events/${id}`, eventData);
+  return response.data;
+};
 
-export const deleteEvent = (id) => api.delete(`/events/${id}`);
+export const deleteEvent = async (id) => {
+  const response = await api.delete(`/api/events/${id}`);
+  return response.data;
+};

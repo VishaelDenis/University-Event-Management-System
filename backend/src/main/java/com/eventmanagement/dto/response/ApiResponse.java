@@ -1,16 +1,60 @@
 package com.eventmanagement.dto.response;
 
-public class ApiResponse {
+/**
+ * Generic API response wrapper used across controllers.
+ * NOTE: also listed under Karikalan's User Management tasks. If it already
+ * exists in the repo with this shape (success/message/data), reuse that one
+ * instead of adding this file again — don't have two classes with the same
+ * fully-qualified name.
+ */
+public class ApiResponse<T> {
+
     private boolean success;
     private String message;
+    private T data;
 
-    public ApiResponse(boolean success, String message) {
+    public ApiResponse() {
+    }
+
+    public ApiResponse(boolean success, String message, T data) {
         this.success = success;
+        this.message = message;
+        this.data = data;
+    }
+
+    public static <T> ApiResponse<T> success(String message, T data) {
+        return new ApiResponse<>(true, message, data);
+    }
+
+    public static <T> ApiResponse<T> success(T data) {
+        return new ApiResponse<>(true, "Success", data);
+    }
+
+    public static <T> ApiResponse<T> error(String message) {
+        return new ApiResponse<>(false, message, null);
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
         this.message = message;
     }
 
-    public boolean isSuccess() { return success; }
-    public void setSuccess(boolean success) { this.success = success; }
-    public String getMessage() { return message; }
-    public void setMessage(String message) { this.message = message; }
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
 }

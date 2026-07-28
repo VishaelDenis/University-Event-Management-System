@@ -4,6 +4,8 @@ import { createEvent, updateEvent } from "../../../api/event";
 function EventForm({ organizerId, editingEvent, onSuccess, onCancel }) {
     const [formData, setFormData] = useState({
         venueId: "",
+        title: "",
+        description: "",
         date: "",
         time: "",
         capacity: "",
@@ -13,6 +15,8 @@ function EventForm({ organizerId, editingEvent, onSuccess, onCancel }) {
         if (editingEvent) {
             setFormData({
                 venueId: editingEvent.venue?.venueId || "",
+                title: editingEvent.title || "",
+                description: editingEvent.description || "",
                 date: editingEvent.date || "",
                 time: editingEvent.time || "",
                 capacity: editingEvent.capacity || "",

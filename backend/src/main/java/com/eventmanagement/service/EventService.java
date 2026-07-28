@@ -46,8 +46,10 @@ public class EventService {
         Event event = new Event();
         event.setVenue(venue);
         event.setOrganizer(organizer);
-        event.setDate(request.getDate());
-        event.setTime(request.getTime());
+        event.setTitle(request.getTitle());
+        event.setDescription(request.getDescription());
+        event.setEventDate(request.getDate());
+        event.setEventTime(request.getTime());
         event.setCapacity(request.getCapacity());
 
         return eventRepository.save(event);
@@ -85,11 +87,11 @@ public class EventService {
         }
 
         if (request.getDate() != null) {
-            event.setDate(request.getDate());
+            event.setEventDate(request.getDate());
         }
 
         if (request.getTime() != null) {
-            event.setTime(request.getTime());
+            event.setEventTime(request.getTime());
         }
 
         return eventRepository.save(event);

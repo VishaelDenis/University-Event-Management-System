@@ -1,0 +1,25 @@
+UserRepository.java needs ONE additional method for FeedbackController to compile
+(this is also listed under Karikalan's User Management tasks — if he's already
+added it, you don't need to do anything here).
+
+Open backend/src/main/java/com/eventmanagement/repository/UserRepository.java
+and make sure it contains:
+
+    import com.eventmanagement.model.User;
+    import org.springframework.data.jpa.repository.JpaRepository;
+    import java.util.Optional;
+
+    public interface UserRepository extends JpaRepository<User, Long> {
+
+        Optional<User> findByEmail(String email);
+
+        // ...any other methods Karikalan adds...
+    }
+
+That's it — Spring Data JPA generates the query automatically from the method
+name, no @Query needed. Once that method exists, the "cannot find symbol"
+error on `userRepository.findByEmail(email)` in FeedbackController.java goes away.
+
+If UserRepository.java doesn't exist in the repo yet at all, create it fresh
+with the contents above (swap Long for whatever type the rest of the team's
+User.java uses for its primary key).
