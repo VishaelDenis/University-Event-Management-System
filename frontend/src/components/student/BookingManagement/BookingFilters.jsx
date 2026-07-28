@@ -1,10 +1,29 @@
-import React from "react";
-import SearchBar from "../../shared/SearchBar";
+import React, { useState } from "react";
 
-function BookingFilters({ onSearch }) {
+function BookingFilters({ onFilter }) {
+    const [status, setStatus] = useState("");
+
+    const handleChange = (e) => {
+        const value = e.target.value;
+        setStatus(value);
+        onFilter(value);
+    };
+
+    const handleClear = () => {
+        setStatus("");
+        onFilter("");
+    };
+
     return (
-        <div className="booking-filters">
-            <SearchBar onSearch={onSearch} />
+        <div>
+            <label>Filter by status: </label>
+            <select value={status} onChange={handleChange}>
+                <option value="">All</option>
+                <option value="PENDING">Pending</option>
+                <option value="CONFIRMED">Confirmed</option>
+                <option value="CANCELLED">Cancelled</option>
+            </select>
+            <button onClick={handleClear}>Clear</button>
         </div>
     );
 }
