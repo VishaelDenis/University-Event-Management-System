@@ -1,6 +1,6 @@
 package com.example.universityeventmanagement.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;  // ✅ Changed from jakarta to javax
 import java.time.LocalDateTime;
 
 @Entity
