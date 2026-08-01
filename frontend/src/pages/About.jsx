@@ -18,7 +18,7 @@ function About() {
                 </p>
                 <p className="muted">
                     Built with a modern tech stack — React on the frontend, Node.js and
-                    Express on the backend, and MongoDB for data persistence.
+                    Express on the backend, and MySQL for data persistence.
                 </p>
                 <p className="muted">
                     Features include role-based access for students, organizers, and
