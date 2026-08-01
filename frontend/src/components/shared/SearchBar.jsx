@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
-function SearchBar({ onSearch }) {
+function SearchBar({ onSearch, placeholder = "Search..." }) {
     const [query, setQuery] = useState("");
     return (
         <input
-            placeholder="Search..."
+            className="search-bar"
+            type="text"
+            placeholder={placeholder}
             value={query}
             onChange={(e) => {
                 setQuery(e.target.value);

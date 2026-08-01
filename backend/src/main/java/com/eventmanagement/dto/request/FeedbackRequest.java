@@ -2,10 +2,16 @@ package com.eventmanagement.dto.request;
 
 public class FeedbackRequest {
     private Long studentId;
-    private String text;
+    private Long eventId;
+    private Integer rating;
+    private String content;
 
     public Long getStudentId() { return studentId; }
     public void setStudentId(Long studentId) { this.studentId = studentId; }
-    public String getText() { return text; }
-    public void setText(String text) { this.text = text; }
+    public Long getEventId() { return eventId; }
+    public void setEventId(Long eventId) { this.eventId = eventId; }
+    public Integer getRating() { return rating; }
+    public void setRating(Integer rating) { this.rating = rating; }
+    public String getContent() { return content; }
+    public void setContent(String content) { this.content = content; }
 }

@@ -6,6 +6,10 @@ import jakarta.persistence.*;
 @Table(name = "bookings")
 public class Booking {
 
+    public enum Status {
+        PENDING, CONFIRMED, CANCELLED
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;
@@ -15,22 +19,30 @@ public class Booking {
     private Event event;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "student_id", nullable = false)
     private User student;
 
-    @Column(nullable = false)
-    private Integer count;
+    @Column(name = "participants_count", nullable = false)
+    private Integer participantsCount;
 
-    // TODO (Vithusan): full Booking Management logic
+    @Enumerated(EnumType.STRING)
+    @Column(name = "booking_status", nullable = false)
+    private Status bookingStatus = Status.PENDING;
 
     public Booking() {}
 
     public Long getBookingId() { return bookingId; }
     public void setBookingId(Long bookingId) { this.bookingId = bookingId; }
+
     public Event getEvent() { return event; }
     public void setEvent(Event event) { this.event = event; }
+
     public User getStudent() { return student; }
     public void setStudent(User student) { this.student = student; }
-    public Integer getCount() { return count; }
-    public void setCount(Integer count) { this.count = count; }
+
+    public Integer getParticipantsCount() { return participantsCount; }
+    public void setParticipantsCount(Integer participantsCount) { this.participantsCount = participantsCount; }
+
+    public Status getBookingStatus() { return bookingStatus; }
+    public void setBookingStatus(Status bookingStatus) { this.bookingStatus = bookingStatus; }
 }

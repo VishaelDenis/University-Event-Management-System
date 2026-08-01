@@ -35,6 +35,9 @@ public class EventService {
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Organizer not found with id: " + request.getOrganizerId()));
 
+        if (request.getTitle() == null || request.getTitle().trim().isEmpty()) {
+            throw new IllegalArgumentException("Title is required");
+        }
         if (request.getCapacity() == null || request.getCapacity() <= 0) {
             throw new IllegalArgumentException("Capacity must be greater than 0");
         }
@@ -46,6 +49,8 @@ public class EventService {
         Event event = new Event();
         event.setVenue(venue);
         event.setOrganizer(organizer);
+        event.setTitle(request.getTitle().trim());
+        event.setDescription(request.getDescription());
         event.setDate(request.getDate());
         event.setTime(request.getTime());
         event.setCapacity(request.getCapacity());
@@ -69,10 +74,16 @@ public class EventService {
         return eventRepository.findByOrganizer_UserId(organizerId);
     }
 
-    // UPDATE - date, time, capacity only (per spec)
+    // UPDATE - date, time, capacity, title, description
     public Event updateEvent(Long id, EventRequest request) {
         Event event = getEventById(id);
 
+        if (request.getTitle() != null && !request.getTitle().trim().isEmpty()) {
+            event.setTitle(request.getTitle().trim());
+        }
+        if (request.getDescription() != null) {
+            event.setDescription(request.getDescription());
+        }
         if (request.getCapacity() != null) {
             if (request.getCapacity() <= 0) {
                 throw new IllegalArgumentException("Capacity must be greater than 0");
